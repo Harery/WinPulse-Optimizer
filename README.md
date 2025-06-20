@@ -1,4 +1,6 @@
-# WinPulse-Optimizer
+# WinPulse-Optimizer  
+![CI](https://github.com/Harery/WinPulse-Optimizer/actions/workflows/ci.yml/badge.svg)
+
 
 > **Next-generation, enterprise-grade Windows 11 tuning for maximum performance with zero guesswork.**
 
