@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]      # run on every push to main
+  pull_request:               # and on every PR targeting main
+
+jobs:
+  tests:
+    runs-on: windows-latest   # GitHub-hosted Windows VM
+    steps:
+      # 1. Checkout source
+      - uses: actions/checkout@v4
+
+      # 2. Install Pester (latest) for the current user
+      - name: Install Pester
+        shell: pwsh
+        run: |
+          Install-Module -Name Pester -Force -Scope CurrentUser
+
+      # 3. (Optional) Static analysis with PSScriptAnalyzer
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser
+
+      - name: Run PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Invoke-ScriptAnalyzer -Path . -Recurse -EnableExit
+
+      # 4. Execute the test suite
+      - name: Run Pester tests
+        shell: pwsh
+        run: |
+          Invoke-Pester -CI          # -CI gives clean, build-server-friendly output
