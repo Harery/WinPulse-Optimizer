@@ -1,0 +1,40 @@
+#############################################################
+# WinPulse-Optimizer – PowerShell project .gitignore
+#############################################################
+
+# ─── Windows / Explorer cruft ───────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*$RECYCLE.BIN/
+
+# ─── macOS finder cruft (in case the repo gets cloned there) ─
+.DS_Store
+
+# ─── Logs & transient output ────────────────────────────────
+*.log
+*.tmp
+*.temp
+SystemOptimizer.log
+
+# ─── VS Code / Editor settings ──────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+
+# ─── PowerShell build artifacts ─────────────────────────────
+#   (Remove these lines if you plan to commit a full module)
+bin/
+obj/
+*.nupkg          # NuGet packages from Publish-Module
+*.zip            # Release bundles
+*.tar.gz
+
+# ─── Test results ───────────────────────────────────────────
+TestResults/
+*.coverage
+*.coveragexml
+
+# ─── CI secrets / overrides (safety net) ────────────────────
+*.ps1.secret
+secrets.json
